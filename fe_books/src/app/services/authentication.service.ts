@@ -11,6 +11,10 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  signup(data: any) {
+  return this.http.post(`${environment.apiUrl}/users`, data);
+}
+
   login(username: string, password: string) {
     return this.http.post<{ token: string }>('http://localhost:3000/login', { username, password });
   }
