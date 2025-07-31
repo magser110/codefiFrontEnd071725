@@ -11,8 +11,8 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  signup(data: any) {
-  return this.http.post(`${environment.apiUrl}/users`, data);
+  signup(user: any) {
+  return this.http.post('http://localhost:3000/users', user);
 }
 
   login(username: string, password: string) {
