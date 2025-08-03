@@ -1,8 +1,8 @@
 
 
 export class Book {
-    readonly id!: number;
-    // id: number = 0;
+    // readonly id!: number;
+    id?: number = 0;
     title: string = '';
     author: string = '';
     read: boolean = false;
