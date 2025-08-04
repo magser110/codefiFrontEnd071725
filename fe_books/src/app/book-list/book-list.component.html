@@ -1,1 +1,19 @@
 <p>book-list works!</p>
+<div class="book-form">
+    <input type="text" [(ngModel)]="newBookTitle" placeholder="add a new book title" required/>
+    <input type="text" [(ngModel)]="newBookAuthor" placeholder="add book's author" required>
+    <input type="checkbox" id="yes" value="yes" >
+    <label for="yes">Yes</label>
+    <input type="checkbox" name="no" id="no" >
+    <label for="no">No</label>
+    <button (click)="addBook()">add book</button>
+</div>
+
+<ul>
+    <li *ngFor="let book of books">
+        <input type="checkbox" [(ngModel)]="book.read" (change)="updateBook(book)"/>
+        <span>{{book}}</span>
+        <button (click)="deleteBook(book.id)">delete</button>
+    </li>
+</ul>
+

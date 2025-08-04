@@ -23,7 +23,7 @@ export class LoginComponent {
         this.router.navigate(['/books-list']);
       },
       error: (error: any) => {
-        console.error('Login error', error)
+        console.error('Login error', error);
       },
     });
   }

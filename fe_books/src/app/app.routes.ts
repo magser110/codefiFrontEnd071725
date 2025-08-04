@@ -11,8 +11,9 @@ export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full'},
     {
         path: 'login',
-        loadComponent: () => import('./login/login.component').then((c)=> c.LoginComponent),
-        // component: LoginComponent,
+        // loadComponent: () => import('./login/login.component').then((c)=> c.LoginComponent),
+        // // component: LoginComponent,
+        component: LoginComponent,
         canActivate: [noAuthGuard]
     },
     {

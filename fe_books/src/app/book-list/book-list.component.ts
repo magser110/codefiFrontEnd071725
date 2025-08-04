@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { BookService } from '../services/book.service';
 import { Book } from '../models/book';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-book-list',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.scss'
 })
