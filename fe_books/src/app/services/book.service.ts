@@ -12,7 +12,7 @@ export class BookService {
   constructor(private http: HttpClient) {}
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>('/api/books');
+    return this.http.get<Book[]>(this.apiUrl);
   }
 
   getBookById(id: number): Observable<Book> {

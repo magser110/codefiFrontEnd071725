@@ -19,8 +19,13 @@ export class BookListComponent {
 
   constructor(private bookService: BookService) {}
 
+
+    loadingBooks(){
+      this.bookService.getBooks().subscribe(books => this.books = books);
+    }
+
   ngOnInit(): void {
-    this.bookService.getBooks().subscribe(books => this.books = books);
+    this.loadingBooks();
   }
 
   addBook(){
@@ -31,7 +36,7 @@ export class BookListComponent {
       id: this.newBookId,
       title: this.newBookTitle,
       author: this.newBookAuthor,
-      read: false
+      read: this.newBookRead
     };
 
     this.bookService.createBook(book).subscribe(newBook => { this.books.push(newBook);
@@ -51,9 +56,14 @@ export class BookListComponent {
     });
   }
 
-  deleteBook(id: number) {
-    this.bookService.deleteBook(id).subscribe({ next: () => this.books.filter(book => book.id !== id),
+  deleteBook(id: number | undefined) {
+    if(id !== undefined){
+    this.bookService.deleteBook(id).subscribe({ next: () => {
+      console.log('Delete successful, filtering books');
+      this.books = this.books.filter(book => book.id !== id);  
+    },
       error: (err) => console.error('Error deleting book:', err)
     });
+  }
   }
 }

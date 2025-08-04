@@ -20,7 +20,7 @@ export class LoginComponent {
       next:(res: any) => {
         console.log('logged in with token:', res.token);
         this.authService.setToken(res.token);
-        this.router.navigate(['/books-list']);
+        this.router.navigate(['/book-list']);
       },
       error: (error: any) => {
         console.error('Login error', error);
