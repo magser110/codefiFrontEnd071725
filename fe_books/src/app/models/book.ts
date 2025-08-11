@@ -6,7 +6,8 @@ export class Book {
     title: string = '';
     author: string = '';
     read: boolean = false;
-
+    cover_image_url: string = '';
+	
     constructor(init?: Partial<Omit<Book, 'id' >>){
         Object.assign(this, init);
     }

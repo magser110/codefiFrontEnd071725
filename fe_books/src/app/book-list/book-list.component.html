@@ -16,6 +16,9 @@
     <li *ngFor="let book of books">
         <input type="checkbox" [(ngModel)]="book.read" (change)="updateBook(book)"/>
         <span>{{book.title}}, {{book.author}}, {{book.read ? 'Read' : 'Not read'}}</span>
+        <img [src]="book.cover_image_url || 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pikpng.com%2Fpngvi%2Fixhobmh_ryan-bear-kakaofriends-kakao-cute-kawaii-bts-kakao-gif-clipart%2F&psig=AOvVaw33R9YGfAR8G8ZAobUIyer8&ust=1754991182228000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCNiny-K5go8DFQAAAAAdAAAAABAE'" alt="book image">
+        class="book_image"
+        />
         <button (click)="deleteBook(book.id)">delete</button>
     </li>
 </ul>

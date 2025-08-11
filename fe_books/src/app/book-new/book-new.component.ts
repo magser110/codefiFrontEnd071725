@@ -15,9 +15,18 @@ export class BookNewComponent {
     title: new FormControl('', [Validators.required]),
     author: new FormControl('', [Validators.required]),
     read: new FormControl('', [Validators.required]),
+    cover_image: new FormControl('', [Validators.required])
   });
 
+  selectedFile: File | null = null;
+
   constructor(private bookService: BookService, private router: Router) {}
+
+  onFileSelected(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      this.selectedFile = event.target.files[0];
+    }
+  }
 
   onSubmit() {
     this.bookService.createBook(this.bookForm.value).subscribe({

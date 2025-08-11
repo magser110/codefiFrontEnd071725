@@ -14,6 +14,10 @@
             <input type="checkbox" id="option1" name="option1" value="Yes">
             <input type="checkbox" id="option2" name="option2" value="No">
         </div>
+        <div>
+            <label for="cover_Image">Cover Image</label>
+            <input type="file" (change)="onFileSelected($event)" id="coverImage" />
+        </div>
         <button type="submit" [disabled]="!bookForm.valid">Submit</button>
     </form>
 </div>
