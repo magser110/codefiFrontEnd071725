@@ -3,10 +3,11 @@ import { BookService } from '../services/book.service';
 import { Book } from '../models/book';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { BookNewComponent } from '../book-new/book-new.component';
 
 @Component({
   selector: 'app-book-list',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, BookNewComponent],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.scss'
 })
@@ -56,14 +57,13 @@ export class BookListComponent {
     });
   }
 
-  deleteBook(id: number | undefined) {
-    if(id !== undefined){
+  deleteBook(id: number) {
+    console.log(id)
     this.bookService.deleteBook(id).subscribe({ next: () => {
       console.log('Delete successful, filtering books');
       this.books = this.books.filter(book => book.id !== id);  
     },
       error: (err) => console.error('Error deleting book:', err)
     });
-  }
   }
 }

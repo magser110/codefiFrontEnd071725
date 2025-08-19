@@ -14,8 +14,8 @@ export class BookNewComponent {
   bookForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     author: new FormControl('', [Validators.required]),
-    read: new FormControl('', [Validators.required]),
-    cover_image: new FormControl('', [Validators.required])
+    read: new FormControl(false, [Validators.required]),
+    // cover_image: new FormControl('', [Validators.required])
   });
 
   selectedFile: File | null = null;
@@ -29,7 +29,14 @@ export class BookNewComponent {
   }
 
   onSubmit() {
-    this.bookService.createBook(this.bookForm.value).subscribe({
+    console.log('testing submit')
+    if (this.bookForm.valid && this.selectedFile){
+      const formData = new FormData();
+      formData.append('title', this.bookForm.get('title')!.value!);
+      formData.append('author', this.bookForm.get('author')!.value!);
+      formData.append('read', this.bookForm.get('read')!.value!.toString());
+      formData.append('cover_image', this.selectedFile, this.selectedFile.name);
+    this.bookService.createBook(formData).subscribe({
       next: (book: Book) => {
         console.log('Book created', book);
         this.router.navigate(['/']);
@@ -39,4 +46,5 @@ export class BookNewComponent {
       }
     });
   }
+}
 }

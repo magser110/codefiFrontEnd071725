@@ -1,5 +1,5 @@
 <p>book-list works!</p>
-<div class="book-form">
+<!-- <div class="book-form">
     <input type="text" [(ngModel)]="newBookTitle" placeholder="add a new book title" required/>
     <input type="text" [(ngModel)]="newBookAuthor" placeholder="add book's author" required>
     <p>Have you read this book?</p>
@@ -10,7 +10,8 @@
      >
     <label for="no">No</label>
     <button (click)="addBook()">add book</button>
-</div>
+</div> -->
+<app-book-new />
 
 <ul>
     <li *ngFor="let book of books">

@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="create-book-title">Create a book</h1>
-    <form [formGroup]="bookForm"] (ngSubmit)="onSubmit()" class="form">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" class="form">
         <div class="form-group">
             <label for="title">Title:</label>
             <input type="text" formControlName="title" id="title" required />
@@ -11,8 +11,8 @@
         </div>
         <div class="form-group">
             <label for="read">Read:</label>
-            <input type="checkbox" id="option1" name="option1" value="Yes">
-            <input type="checkbox" id="option2" name="option2" value="No">
+            <input type="checkbox" formControlName="read" >
+            
         </div>
         <div>
             <label for="cover_Image">Cover Image</label>
